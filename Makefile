@@ -1,22 +1,22 @@
-all: splash2
+all: world
 
 CXX?=g++
-CXXFLAGS?=--std=c++23
-#-ggdb
+CXXFLAGS?=--std=c++23 -Wall
+INCLUDES:=-I./include -I.
 
 OBJS:= \
 	objs/main.o
 
-SHARED_OBJS:=objs/common.o objs/log.o
-LIBS:=
+include common/Makefile.inc
+include logger/Makefile.inc
 
-INCLUDES:=-I./include -I.
+world: splash2
 
 objs/main.o: main.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c -o $@ $<;
 
-splash2: $(OBJS)
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) $(LIBS) -o $@;
+splash2: $(OBJS) $(COMMON_OBJS) $(LOGGER_OBJS)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@;
 
 clean:
 	rm -f objs/** splash2
