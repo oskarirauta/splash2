@@ -1,0 +1,3 @@
+[submodule "json2cpp"]
+	path = json2cpp
+	url = https://github.com/oskarirauta/json2cpp.git
