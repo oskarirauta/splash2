@@ -4,3 +4,6 @@
 [submodule "logger"]
 	path = logger
 	url = https://github.com/oskarirauta/logcpp.git
+[submodule "fmt"]
+	path = fmt
+	url = https://github.com/fmtlib/fmt.git
